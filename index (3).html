@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&family=Monoton&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  height:100vh;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Slides */
+.slide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:1s ease;
+}
+.slide.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Slide backgrounds */
+.s1{background:linear-gradient(135deg,#5a3b2e,#f3e7d3)}
+.s2{background:linear-gradient(135deg,#ff4d6d,#000)}
+.s3{background:linear-gradient(135deg,#0f2027,#2c5364)}
+.s4{background:linear-gradient(135deg,#20002c,#cbb4d4)}
+.s5{background:linear-gradient(135deg,#000,#1a1a1a)}
+
+/* Envelope */
+.envelope{
+  width:260px;height:170px;
+  background:#f3e7d3;
+  border:3px solid #5a3b2e;
+  position:relative;
+  cursor:pointer;
+}
+.envelope:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:0;height:0;
+  border-left:130px solid transparent;
+  border-right:130px solid transparent;
+  border-top:85px solid #5a3b2e;
+}
+.envelope span{
+  position:absolute;
+  bottom:15px;
+  width:100%;
+  font-family:'Great Vibes',cursive;
+  font-size:24px;
+  color:#5a3b2e;
+}
+
+/* Text styles */
+.vintage{
+  font-family:'Great Vibes',cursive;
+  font-size:34px;
+  color:#5a3b2e;
+}
+.neon{
+  font-family:'Monoton',cursive;
+  font-size:32px;
+  color:#ff4d6d;
+  text-shadow:0 0 10px #ff4d6d,0 0 20px #ff4d6d;
+}
+.white{
+  color:#fff;
+  font-size:22px;
+}
+.cat{font-size:60px;margin-top:10px}
+
+/* Hearts */
+.heart{
+  position:absolute;
+  color:red;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh);opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-10vh);opacity:0}
+}
+
+button{
+  margin-top:20px;
+  padding:10px 22px;
+  border:none;
+  border-radius:20px;
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide s1 active">
+  <div class="envelope" onclick="nextSlide()">
+    <span>Click to open 💌</span>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide s2">
+  <div class="vintage" style="color:#fff">
+    You're my favourite person 💖  
+    <br>Happy Rose Day 🌹  
+    <br>Stay Happy Always
+  </div>
+  <button onclick="nextSlide()">Next ➜</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide s3">
+  <div class="neon">Happy Rose Day Noor 🌹</div>
+  <div class="cat">🐱💐</div>
+  <button onclick="nextSlide()">Next ➜</button>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide s4">
+  <div class="white">
+    Roses for you 🌹🌹  
+    <br>Because you make life beautiful
+  </div>
+  <button onclick="nextSlide()">Next ➜</button>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide s5">
+  <div class="neon">Forever Special 💖</div>
+  <div class="cat">😺🌹</div>
+</div>
+
+<script>
+let current=0;
+const slides=document.querySelectorAll('.slide');
+
+function nextSlide(){
+  slides[current].classList.remove('active');
+  current=(current+1)%slides.length;
+  slides[current].classList.add('active');
+}
+
+/* Hearts generator */
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='❤';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(12+Math.random()*20)+'px';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
